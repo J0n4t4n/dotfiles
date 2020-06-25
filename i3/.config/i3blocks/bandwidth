@@ -1,0 +1,13 @@
+#!/bin/sh
+
+logfile="/tmp/netlog"
+prevdata="$(cat "$logfile")"
+
+rxcurrent="$(($(cat /sys/class/net/[!l]*/statistics/rx_bytes | paste -sd '+')))"
+txcurrent="$(($(cat /sys/class/net/[!l]*/statistics/tx_bytes | paste -sd '+')))"
+
+printf "%sKiB %sKiB\\n" \
+	"$(((rxcurrent-${prevdata%% *})/1024))" \
+	"$(((txcurrent-${prevdata##* })/1024))"
+
+echo "$rxcurrent $txcurrent" > "$logfile"
