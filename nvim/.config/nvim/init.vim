@@ -4,6 +4,17 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Install function for vim-markdown-composer
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release --locked
+    else
+      !cargo build --release --locked --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
 " Install vim plugins
 call plug#begin('~/.vim/plugged')
 
@@ -22,6 +33,8 @@ Plug 'raimondi/delimitmate'
 " Syntax Checking with Rust Support
 Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
+" Markdown Preview
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 call plug#end()
 
@@ -80,6 +93,9 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "u"
     \ }
 let g:NERDTreeShowIgnoredStatus = 1
+
+" Markdown Preview use surf browser
+let g:markdown_composer_browser = "surf"
 
 " Window switching keybinds
 nnoremap <C-Up> <C-W><Up>
