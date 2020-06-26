@@ -1,0 +1,8 @@
+[core]
+    editor = nvim
+[user]
+	name = Jonatan Steuernagel
+	email = jonatan@jsteuernagel.de
+    signingkey = BE63A27135DE14E3
+[commit]
+	gpgsign = true
