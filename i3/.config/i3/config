@@ -14,7 +14,6 @@ set $mod Mod4
 #gaps inner 5
 
 
-
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
 # from the generated scheme.
@@ -33,9 +32,7 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $bg
 
 
-
-exec --no-startup-id setxkbmap -layout de
-exec --no-startup-id setxkbmap -option caps:swapescape
+exec --no-startup-id setxkbmap -layout de && xmodmap ~/.Xmodmap
 
 exec --no-startup-id sleep 2 && xplugd
 
