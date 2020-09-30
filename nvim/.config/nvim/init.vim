@@ -80,7 +80,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " Configure NerdTree git symbols
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "M",
     \ "Staged"    : "✚",
     \ "Untracked" : "?",
@@ -92,7 +92,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : 'i',
     \ "Unknown"   : "u"
     \ }
-let g:NERDTreeShowIgnoredStatus = 1
+let g:NERDTreeGitStatusShowIgnored = 1
 
 " Markdown Preview use surf browser
 let g:markdown_composer_browser = "surf"
