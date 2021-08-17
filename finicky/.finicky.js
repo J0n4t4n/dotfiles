@@ -9,7 +9,7 @@ module.exports = {
       browser: "Google Chrome"
     },
     {
-      match: /^https?:\/\/dhow\-stuttgart\.zoom\.us\/.*$/,
+      match: /^https?:\/\/teams\.microsoft\.com\/.*$/,
       browser: "Google Chrome"
     }
   ]
