@@ -4,17 +4,6 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Install function for vim-markdown-composer
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release --locked
-    else
-      !cargo build --release --locked --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-
 " Install vim plugins
 call plug#begin('~/.vim/plugged')
 
@@ -26,15 +15,8 @@ Plug 'tpope/vim-fugitive'
 " File explorer
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Language completion
-Plug 'Valloric/YouCompleteMe'
 " Auto closing of brackets, quotes, etc.
 Plug 'raimondi/delimitmate'
-" Syntax Checking with Rust Support
-Plug 'vim-syntastic/syntastic'
-Plug 'rust-lang/rust.vim'
-" Markdown Preview
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 call plug#end()
 
@@ -53,9 +35,9 @@ set linebreak
 " Configure automatic indentation
 set autoindent      " Inherit indentation from previous lines
 set expandtab       " Expand tabs to spaces
-set shiftwidth=4    " Indent four spaces when shifting
+set shiftwidth=2    " Indent four spaces when shifting
 set smarttab        " Insert 'tabstop' spaces when tab is pressed
-set tabstop=4       " Indent four spaces
+set tabstop=2       " Indent four spaces
 filetype indent on  " Use file-type specific indentation rules
 
 " Configure persistent undo
@@ -69,12 +51,9 @@ set undoreload=2000
 " Needs xclip or other (:h clipboard)
 set clipboard+=unnamedplus
 
-" Run rustfmt on save
-let g:rustfmt_autosave = 1
-
 " Select airline theme
-let g:airline_theme='powerlineish'
-let g:airline_powerline_fonts = 1
+"let g:airline_theme='powerlineish'
+"let g:airline_powerline_fonts = 1
 " Activate upper tabline and set styling
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -94,27 +73,12 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ }
 let g:NERDTreeGitStatusShowIgnored = 1
 
-" Markdown Preview use surf browser
-let g:markdown_composer_browser = "surf"
-
 " Window switching keybinds
-nnoremap <C-Up> <C-W><Up>
-nnoremap <C-Down> <C-W><Down>
-nnoremap <C-Left> <C-W><Left>
-nnoremap <C-Right> <C-W><Right>
+"nnoremap <C-Up> <C-W><Up>
+"nnoremap <C-Down> <C-W><Down>
+"nnoremap <C-Left> <C-W><Left>
+"nnoremap <C-Right> <C-W><Right>
 map <C-n> :NERDTreeToggle<CR>
-
-" Bugged?
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-" Always fill error list
-let g:syntastic_always_populate_loc_list = 1
-" Don't automatically open error list
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " Reload file on window focus
 au FocusGained,BufEnter * :silent! !
@@ -125,9 +89,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " On save of init.vim reload settings
 au BufWritePost init.vim source $MYVIMRC
 
-" au BufNewFile,BufRead,BufEnter	*.md	setlocal spell	spelllang=en_us,de_de
+au BufNewFile,BufRead,BufEnter	*.md	setlocal spell	spelllang=en_us,de_de
 au BufNewFile,BufRead,BufEnter	*.txt	setlocal spell	spelllang=en_us,de_de
 au BufNewFile,BufRead,BufEnter	README	setlocal spell	spelllang=en_us
 " au BufWritePost			*.md	!pandoc -o "<afile>:p:r.pdf" "<afile>:p"
 
-au BufWritePost *beamer.md silent! !pandoc -s -t beamer --slide-level 2 -o "<afile>:p:r.pdf" "<afile>:p"
+"au BufWritePost *beamer.md silent! !pandoc -s -t beamer --slide-level 2 -o "<afile>:p:r.pdf" "<afile>:p"
