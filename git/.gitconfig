@@ -1,3 +1,5 @@
+[init]
+  defaultBranch = main
 [core]
   editor = nvim
 [user]
@@ -6,3 +8,6 @@
   signingkey = BE63A27135DE14E3
 [commit]
   gpgsign = true
+
+[includeIf "gitdir:~/DXC/**"]
+  path = ~/DXC/.gitconfig
