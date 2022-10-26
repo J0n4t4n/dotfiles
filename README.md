@@ -1,21 +1,64 @@
 # Dotfiles
 
-These are my personal dotfiles that I use on my Thinkpad T420 and now starting to use on my 2020 M1 Mac Mini.
+These are my personal dotfiles that I use on my Personal and Work Macbooks.
 They are sorted into folders based on application.
 
-Some of them are grouped together according to function.
-For example: i3 contains i3blocks as well, as they are closely linked.
+## Install Custom Terminal
 
-## Usage
-
-After cloning the repo the configurations can be applied individually using stow from within the repo folder.
+Based on: https://www.josean.com/posts/terminal-setup
 
 ```bash
-stow PACKAGE
+brew install iterm2
 ```
 
-For example:
+Use iTerm2 from now on.
 
 ```bash
-stow i3
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+```
+
+Change in .zshrc
+
+```
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
+
+Restart iTerm2 and run (if not automatically):
+
+```bash
+p10k configure
+```
+
+Download and import:
+
+```bash
+curl https://raw.githubusercontent.com/josean-dev/dev-environment-files/main/coolnight.itermcolors --output ~/Downloads/coolnight.itermcolors
+```
+
+iTerm preferences: Profiles -> Colors -> Import and select (coolnight)
+
+Install ZSH Plugins:
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+Configure ZSH Plugins:
+
+```
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
+```
+
+```bash
+ln -s ~/Git/dotfiles/zsh/.zshrc.personal .zshrc.custom
+ln -s ~/Git/dotfiles/zsh/.p10k.zsh .p10k.zsh
+```
+
+Change -e to -L and:
+
+```
+# --- My config ---
+[[ ! -L ~/.zshrc.custom ]] || source ~/.zshrc.custom
 ```
