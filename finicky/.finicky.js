@@ -5,12 +5,20 @@ module.exports = {
   defaultBrowser: "Safari",      
   handlers: [
     {
-      match: /^https?:\/\/meet\.jsteuernagel\.de\/.*$/,
+      match: /^https?:\/\/meet\.wuest\.dev\/.*$/,
       browser: "Google Chrome"
     },
     {
       match: /^https?:\/\/teams\.microsoft\.com\/.*$/,
       browser: "Google Chrome"
+    },
+    {
+      match: /^https?:\/\/dxcportal.sharepoint.com\/.*$/,
+      browser: "Google Chrome"
+    },
+    {
+      match: /dc-ratingen.de/,
+      browser: "Firefox"
     }
   ]
 }
