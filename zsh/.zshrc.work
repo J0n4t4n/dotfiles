@@ -1,0 +1,36 @@
+export PATH="/opt/homebrew/bin:$PATH"
+# BEGIN ANSIBLE MANAGED BLOCK
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
+# END ANSIBLE MANAGED BLOCK
+export PATH="${PATH}:${HOME}/.krew/bin"
+# BEGIN ANSIBLE MANAGED ZSH
+alias ls='exa -alFg --git'
+alias vim='nvim'
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+# END ANSIBLE MANAGED ZSH
+
+export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
+
+eval "$(op completion zsh)"; compdef _op op
+source <(kubectl completion zsh)
+
+alias kube_debug="kubectl run -i --tty --rm debug --image=ubuntu --restart=Never -- sh"
+alias aws="op run --env-file=$HOME/.config/op/aws-env -- aws"
+alias terraform="op run --env-file=$HOME/.config/op/aws-env -- terraform"
+
+export DOCKER_HOST="unix:///Users/jonatan/.rd/docker.sock"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/jonatan/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+export PATH="/opt/homebrew/bin:$PATH"

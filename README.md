@@ -56,9 +56,7 @@ ln -s ~/Git/dotfiles/zsh/.zshrc.personal .zshrc.custom
 ln -s ~/Git/dotfiles/zsh/.p10k.zsh .p10k.zsh
 ```
 
-Change -e to -L and:
-
 ```
 # --- My config ---
-[[ ! -L ~/.zshrc.custom ]] || source ~/.zshrc.custom
+[[ ! -e ~/.zshrc.custom ]] || source ~/.zshrc.custom
 ```
