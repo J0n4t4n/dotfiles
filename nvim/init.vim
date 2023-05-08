@@ -133,5 +133,5 @@ require('jonatan.plugins.lsp.lspsaga')
 require('jonatan.plugins.lsp.mason')
 require('jonatan.plugins.lsp.null-ls')
 require('jonatan.plugins.lsp.mason-null-ls')
-require('jonatan.plugins.gitsigns')
+-- require('jonatan.plugins.gitsigns')
 END
