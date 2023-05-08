@@ -1,6 +1,7 @@
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/Users/jonatan/.cargo/bin:/opt/homebrew/bin:$PATH"
 export PATH="${PATH}:${HOME}/.krew/bin"
 export DOCKER_HOST="unix:///Users/jonatan/.rd/docker.sock"
+export SAM_CLI_TELEMETRY=0
 
 # Autocompletions
 autoload bashcompinit && bashcompinit
@@ -28,6 +29,8 @@ alias ls='exa -alFg --git'
 alias vim='nvim'
 
 alias kube_debug="kubectl run -i --tty --rm debug --image=ubuntu --restart=Never -- sh"
+#alias kubectl="op run --env-file=$HOME/.config/op/aws-env -- kubectl"
+#alias kubens="op run --env-file=$HOME/.config/op/aws-env -- kubens"
 alias aws="op run --env-file=$HOME/.config/op/aws-env -- aws"
 alias terraform="op run --env-file=$HOME/.config/op/aws-env -- terraform"
 
@@ -35,3 +38,4 @@ alias terraform="op run --env-file=$HOME/.config/op/aws-env -- terraform"
 export PATH="/Users/jonatan/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
