@@ -50,6 +50,9 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
 
+Plug 'mthbernardes/codeexplain.nvim'
+Plug 'folke/which-key.nvim'
+
 call plug#end()
 
 " Show linenumbers
@@ -82,6 +85,9 @@ set undoreload=2000
 " Don't use + and * registers
 " Needs xclip or other (:h clipboard)
 set clipboard+=unnamedplus
+
+" Set timeout for WhichKey
+set timeoutlen=250
 
 " Configure NerdTree git symbols
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -125,6 +131,7 @@ au BufNewFile,BufRead,BufEnter	README	setlocal spell	spelllang=en_us
 " Based on: https://github.com/josean-dev/dev-environment-files
 lua << END
 require('jonatan.plugins.nvim-cmp')
+require('jonatan.plugins.which-key')
 require('jonatan.plugins.lualine')
 require('jonatan.plugins.autopairs')
 require('jonatan.plugins.treesitter')
