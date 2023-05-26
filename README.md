@@ -60,3 +60,9 @@ ln -s ~/Git/dotfiles/zsh/.p10k.zsh .p10k.zsh
 # --- My config ---
 [[ ! -e ~/.zshrc.custom ]] || source ~/.zshrc.custom
 ```
+
+## NVIM
+
+```sh
+ln -s ~/Git/dotfiles/nvim ~/.config
+```
