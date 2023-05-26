@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
 
 " Managing & Installing LSP servers, linters & formatters
-Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate'}
 Plug 'williamboman/mason-lspconfig.nvim' " bridges gap b/w mason & lspconfig
 Plug 'jayp0521/mason-null-ls.nvim' " bridges gab b/w mason & null-ls
 " Language Server
